@@ -1,4 +1,4 @@
-package com.hiof.stud.localstories;
+package no.hiof.stud.localstories;
 
 import java.util.ArrayList;
 
