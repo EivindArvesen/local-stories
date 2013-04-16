@@ -31,6 +31,25 @@
     </TableRow>
     
     <TableRow
+        android:id="@+id/range"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+	</TableRow>
+	
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <SeekBar
+            android:id="@+id/seekBar1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+	</TableRow>
+    
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
