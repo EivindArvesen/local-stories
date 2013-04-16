@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
      // create RangeSeekBar as Date range between 1950 BCE and now
         Date minDate = null;
 		try {
-			minDate = new SimpleDateFormat("dd/MM/yyyy").parse("01/12/-1950");
+			minDate = new SimpleDateFormat("yyyy").parse("-1950");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

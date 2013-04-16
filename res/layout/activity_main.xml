@@ -27,7 +27,6 @@
 	        android:layout_height="wrap_content"
 	        android:text="@string/button_send"
 	        android:onClick="sendMessage" />
-        
     </TableRow>
     
     <TableRow
@@ -40,13 +39,76 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1.0" >
+
+        <TextView
+            android:id="@+id/fromYearText"
+        	android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".15"
+            android:text="@string/from_year_text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <TextView
+            android:id="@+id/fromYearValue"
+        	android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".25"
+            android:text="@string/from_year_value"
+            android:gravity="right"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <TextView
+            android:id="@+id/hidden_value"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight=".20"
+	        android:text=""
+	    	android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <TextView
+            android:id="@+id/toDateText"
+        	android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".15"
+            android:text="@string/to_year_text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <TextView
+            android:id="@+id/toYearValue"
+        	android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".25"
+            android:text="@string/to_year_value"
+            android:gravity="right"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+	</TableRow>
+	
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
         <SeekBar
             android:id="@+id/seekBar1"
-            android:layout_width="match_parent"
+            android:layout_weight="1"
+        	android:layout_width="0dp"
             android:layout_height="wrap_content" />
 
+        <TextView
+            android:id="@+id/radiusText"
+        	android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radius_text"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        <TextView
+            android:id="@+id/radiusValue"
+        	android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radius_value"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 	</TableRow>
     
     <TableRow
@@ -57,7 +119,6 @@
         android:id="@+id/mapview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dip"
         android:layout_weight="1"
         android:clickable="true"/>
     </TableRow>

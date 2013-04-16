@@ -3,8 +3,14 @@
 
     <string name="app_name">Local Stories</string>
     <string name="action_settings">Settings</string>
-    <string name="edit_message">Enter a message</string>
-    <string name="button_send">Send</string>
+    <string name="edit_message">Enter search-terms</string>
+    <string name="from_year_text">From: </string>
+    <string name="from_year_value">1950 BCE</string>
+    <string name="to_year_text">To: </string>
+    <string name="to_year_value">2013 CE</string>
+    <string name="radius_text">Radius: </string>
+    <string name="radius_value">5km</string>
+    <string name="button_send">Search</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_display_message">My Message</string>
