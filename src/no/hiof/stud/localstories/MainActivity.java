@@ -152,11 +152,8 @@ public class MainActivity extends Activity {
     		public void onClick(View v) {
     			// TODO Auto-generated method stub
     			
-    			float x = mMapView.getScaleX();
-    			float y = mMapView.getScaleY();
+    			mMapController.setZoom(mMapView.getZoomLevel()+1);
     			
-    			mMapView.setScaleX((float) (x+1));
-    			mMapView.setScaleY((float) (y+1));
     		}
     	});
      
@@ -166,12 +163,8 @@ public class MainActivity extends Activity {
     		public void onClick(View v) {
     			// TODO Auto-generated method stub
     			
-     
-    			float x = mMapView.getScaleX();
-    			float y = mMapView.getScaleY();
+    			mMapController.setZoom(mMapView.getZoomLevel()-1);
     			
-    			mMapView.setScaleX((float) (x-1));
-    			mMapView.setScaleY((float) (y-1));
     		}
     	});
         
