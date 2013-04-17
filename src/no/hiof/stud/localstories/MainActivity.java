@@ -153,7 +153,6 @@ public class MainActivity extends Activity {
     			// TODO Auto-generated method stub
     			
     			mMapController.setZoom(mMapView.getZoomLevel()+1);
-    			
     		}
     	});
      
@@ -164,7 +163,6 @@ public class MainActivity extends Activity {
     			// TODO Auto-generated method stub
     			
     			mMapController.setZoom(mMapView.getZoomLevel()-1);
-    			
     		}
     	});
         
