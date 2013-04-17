@@ -26,6 +26,7 @@ public final class R {
         public static final int seek_thumb_pressed=0x7f020002;
     }
     public static final class id {
+        public static final int RadiusSeekBar=0x7f080007;
         public static final int action_settings=0x7f08000c;
         public static final int edit_message=0x7f080000;
         public static final int fromYearText=0x7f080002;
@@ -36,7 +37,6 @@ public final class R {
         public static final int radiusText=0x7f080008;
         public static final int radiusValue=0x7f080009;
         public static final int range=0x7f080001;
-        public static final int seekBar1=0x7f080007;
         public static final int toDateText=0x7f080005;
         public static final int toYearValue=0x7f080006;
     }

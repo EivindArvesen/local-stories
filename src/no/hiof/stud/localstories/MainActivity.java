@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ZoomControls;
 import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -62,7 +63,6 @@ public class MainActivity extends Activity {
                 public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Long minValue, Long maxValue) {
                         // handle changed range values
 	            	    Calendar myCal;
-	            	    Log.i("LocalStories", "Min is now" + minValue);
 	            	    myCal= new GregorianCalendar();
 	            	    myCal.setTime(new Date(minValue));
 	                	yearFrom = myCal.get(Calendar.YEAR) + myCal.get(Calendar.ERA);
@@ -75,6 +75,7 @@ public class MainActivity extends Activity {
                 		TextView toYear = (TextView) findViewById(R.id.toYearValue);
                 		
                 		// FIX for displaying correct era
+                		// Log.i("LocalStories", "Min is now" + minValue);
                 		String baFrom, baTo;
                 		Long yearZero = -62146336523773L;
                 		
@@ -103,10 +104,35 @@ public class MainActivity extends Activity {
                         Log.i("LocalStories", "User selected new date range: MIN=" + new Date(minValue) + ", MAX=" + new Date(maxValue));
                 }
         });
-
         // add RangeSeekBar to pre-defined layout
         ViewGroup layout = (ViewGroup) findViewById(R.id.range);
         layout.addView(seekBar);
+        
+        // Handle Radius-seekbar
+        SeekBar radiusSB = (SeekBar) findViewById(R.id.RadiusSeekBar);
+        
+        radiusSB.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
+
+			@Override
+			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
+				// TODO Auto-generated method stub
+				((TextView) findViewById(R.id.radiusValue)).setText(arg1+"km");
+				Log.i("LocalStories", "User selected new radiuse: " + arg1);
+				
+			}
+
+			@Override
+			public void onStartTrackingTouch(SeekBar arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onStopTrackingTouch(SeekBar arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
         
         // osm-code here
      	mMapView = (MapView) findViewById(R.id.mapview);
