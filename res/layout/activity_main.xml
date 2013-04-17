@@ -111,7 +111,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall" />
 	</TableRow>
     
-    <TableRow
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
@@ -121,6 +121,13 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:clickable="true"/>
-    </TableRow>
+        
+        <ZoomControls
+        android:id="@+id/map_zoom_controls"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+	    android:layout_alignParentBottom="true" 
+	    android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 
 </LinearLayout>

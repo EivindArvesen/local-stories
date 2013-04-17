@@ -17,31 +17,24 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ZoomControls;
 
 public class MainActivity extends Activity {
 	public final static String EXTRA_MESSAGE = "no.hiof.stud.localstories.MESSAGE";
 	
 	private MapView         mMapView;
     private MapController   mMapController;
+    ZoomControls zoom;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		// osm-code here
-		mMapView = (MapView) findViewById(R.id.mapview);
-        mMapView.setTileSource(TileSourceFactory.MAPNIK);
-        mMapView.setBuiltInZoomControls(true);
-        mMapController = mMapView.getController();
-        mMapController.setZoom(13);
-        GeoPoint gPt = new GeoPoint(51500000, -150000);
-        //Centre map near to Hyde Park Corner, London
-        mMapController.setCenter(gPt);
         
-     // create RangeSeekBar as Date range between 1950 BCE and now
+		// create RangeSeekBar as Date range between 1950 BCE and now
         Date minDate = null;
 		try {
 			minDate = new SimpleDateFormat("yyyy").parse("-1950");
@@ -62,6 +55,53 @@ public class MainActivity extends Activity {
         // add RangeSeekBar to pre-defined layout
         ViewGroup layout = (ViewGroup) findViewById(R.id.range);
         layout.addView(seekBar);
+        
+        // osm-code here
+     	mMapView = (MapView) findViewById(R.id.mapview);
+        mMapView.setTileSource(TileSourceFactory.MAPNIK);
+        
+        mMapView.setClickable(true);
+        mMapView.setMultiTouchControls(true);
+        mMapView.setBuiltInZoomControls(true);
+        
+        mMapController = mMapView.getController();
+        mMapController.setZoom(13);
+        
+        zoom = (ZoomControls) findViewById(R.id.map_zoom_controls);
+        zoom.setOnZoomInClickListener(new OnClickListener() {
+			
+    		@Override
+    		public void onClick(View v) {
+    			// TODO Auto-generated method stub
+    			
+    			float x = mMapView.getScaleX();
+    			float y = mMapView.getScaleY();
+    			
+    			mMapView.setScaleX((float) (x+1));
+    			mMapView.setScaleY((float) (y+1));
+    		}
+    	});
+     
+            zoom.setOnZoomOutClickListener(new View.OnClickListener() {
+    			
+    		@Override
+    		public void onClick(View v) {
+    			// TODO Auto-generated method stub
+    			
+     
+    			float x = mMapView.getScaleX();
+    			float y = mMapView.getScaleY();
+    			
+    			mMapView.setScaleX((float) (x-1));
+    			mMapView.setScaleY((float) (y-1));
+    		}
+    	});
+        
+        float lat   = 59.123389f;   //in DecimalDegrees
+        float lng   = 11.446778f;   //in DecimalDegrees
+        GeoPoint gPt = new GeoPoint((int)(lat * 1E6), (int)(lng * 1E6));
+        //Centre map near to Halden
+        mMapController.setCenter(gPt);
 	}
 
 	@Override
