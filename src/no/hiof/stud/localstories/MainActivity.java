@@ -2,7 +2,9 @@ package no.hiof.stud.localstories;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import no.hiof.stud.localstories.RangeSeekBar.OnRangeSeekBarChangeListener;
 
@@ -21,18 +23,29 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ZoomControls;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	public final static String EXTRA_MESSAGE = "no.hiof.stud.localstories.MESSAGE";
 	
 	private MapView         mMapView;
     private MapController   mMapController;
+
     ZoomControls zoom;
+
+    //Search
+    private int yearFrom;
+    private int yearTo;
+    private Search search = new Search();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		//Load events
+		Load.load();
         
 		// create RangeSeekBar as Date range between 1950 BCE and now
         Date minDate = null;
@@ -45,9 +58,48 @@ public class MainActivity extends Activity {
         Date maxDate = new Date();
         RangeSeekBar<Long> seekBar = new RangeSeekBar<Long>(minDate.getTime(), maxDate.getTime(), this);
         seekBar.setOnRangeSeekBarChangeListener(new OnRangeSeekBarChangeListener<Long>() {
-                @Override
+            @Override
                 public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Long minValue, Long maxValue) {
                         // handle changed range values
+	            	    Calendar myCal;
+	            	    Log.i("LocalStories", "Min is now" + minValue);
+	            	    myCal= new GregorianCalendar();
+	            	    myCal.setTime(new Date(minValue));
+	                	yearFrom = myCal.get(Calendar.YEAR) + myCal.get(Calendar.ERA);
+                 	    myCal= new GregorianCalendar();
+                	    myCal.setTime(new Date(maxValue));
+                		yearTo = myCal.get(Calendar.YEAR) + myCal.get(Calendar.ERA);
+                		
+                		//TEST on update yearSeek
+                		TextView fromYear = (TextView) findViewById(R.id.fromYearValue);
+                		TextView toYear = (TextView) findViewById(R.id.toYearValue);
+                		
+                		// FIX for displaying correct era
+                		String baFrom, baTo;
+                		Long yearZero = -62146336523773L;
+                		
+                		if (minValue < yearZero)
+                		{
+                			baFrom = " BCE";
+                			
+                			if (yearTo < yearZero)
+                			{
+                				baTo = " BCE";
+                			}
+                			else
+                			{
+                				baTo = " CE";
+                			}
+                		}
+                		else
+                		{
+                			baFrom = " CE";
+                			baTo = " CE";
+                		}
+                		
+                		fromYear.setText(yearFrom+baFrom);
+                		toYear.setText(yearTo+baTo);
+                		//END TEST
                         Log.i("LocalStories", "User selected new date range: MIN=" + new Date(minValue) + ", MAX=" + new Date(maxValue));
                 }
         });
@@ -99,6 +151,8 @@ public class MainActivity extends Activity {
         
         float lat   = 59.123389f;   //in DecimalDegrees
         float lng   = 11.446778f;   //in DecimalDegrees
+        
+        // HIOF: GeoPoint gPt = new GeoPoint(59128879,11353987);
         GeoPoint gPt = new GeoPoint((int)(lat * 1E6), (int)(lng * 1E6));
         //Centre map near to Halden
         mMapController.setCenter(gPt);
@@ -114,11 +168,26 @@ public class MainActivity extends Activity {
 	/** Called when the user clicks the Send button */
 	public void sendMessage(View view) {
 	    // Do something in response to button
-		Intent intent = new Intent(this, DisplayMessageActivity.class);
+		/*Intent intent = new Intent(this, DisplayMessageActivity.class);
 	    EditText editText = (EditText) findViewById(R.id.edit_message);
 	    String message = editText.getText().toString();
 	    intent.putExtra(EXTRA_MESSAGE, message);
-	    startActivity(intent);
+	    startActivity(intent);*/
+	    //SEARCH
+		search.resetSearch();
+	    Log.i("LocalStories", "From "+ yearFrom);
+	    Log.i("LocalStories", "To " + yearTo);
+	    search.setYear(yearFrom, yearTo);
+	    EditText freeText = (EditText) findViewById(R.id.edit_message);
+	    String txt = freeText.getText().toString();
+	    search.setText(txt);
+	    //TODO ADD LOCATION
+	    //search.setLocation(x, y, dist);
+	    search.start();
+	    //TODO Switch to resultpage
+	    //      Display: search.getList();
+	    Log.i("LocalStories", search.getList().size()+" results");
+        
 	}
 
 }
