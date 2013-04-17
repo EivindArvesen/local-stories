@@ -1,4 +1,4 @@
-# Localstories
+# Local Stories
 ## A mobile application that visualizes local history.
 
 ![screenshot](https://bitbucket.org/eivind88/local-stories/raw/master/screenshot.png)

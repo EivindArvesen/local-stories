@@ -83,7 +83,7 @@ public class MainActivity extends Activity {
                 		{
                 			baFrom = " BCE";
                 			
-                			if (yearTo < yearZero)
+                			if (maxValue < yearZero)
                 			{
                 				baTo = " BCE";
                 			}
