@@ -29,6 +29,8 @@ public class MainActivity extends FragmentActivity {
     private float distance=5;
     private Search search = new Search();
     
+    // HIOF: GeoPoint gPt = new GeoPoint(59128879,11353987);
+    
     //GPS Location
     public static float lat   = 59.123389f;   //in DecimalDegrees
     public static float lng   = 11.446778f;   //in DecimalDegrees
@@ -53,50 +55,58 @@ public class MainActivity extends FragmentActivity {
 		}
         Date maxDate = new Date();
         RangeSeekBar<Long> seekBar = new RangeSeekBar<Long>(minDate.getTime(), maxDate.getTime(), this);
+       
+        // Initiate minValue as year zero
+        Long yearZero = -62146336523773L;
+        seekBar.setSelectedMinValue(yearZero);
+        TextView fromYear = (TextView) findViewById(R.id.fromYearValue);
+        fromYear.setText("0 CE");
+        
+        
         seekBar.setOnRangeSeekBarChangeListener(new OnRangeSeekBarChangeListener<Long>() {
-            @Override
-                public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Long minValue, Long maxValue) {
-                        // handle changed range values
-	            	    Calendar myCal;
-	            	    myCal= new GregorianCalendar();
-	            	    myCal.setTime(new Date(minValue));
-	                	yearFrom = myCal.get(Calendar.YEAR) + myCal.get(Calendar.ERA);
-                 	    myCal= new GregorianCalendar();
-                	    myCal.setTime(new Date(maxValue));
-                		yearTo = myCal.get(Calendar.YEAR) + myCal.get(Calendar.ERA);
-                		
-                		//TEST on update yearSeek
-                		TextView fromYear = (TextView) findViewById(R.id.fromYearValue);
-                		TextView toYear = (TextView) findViewById(R.id.toYearValue);
-                		
-                		// FIX for displaying correct era
-                		// Log.i("LocalStories", "Min is now" + minValue);
-                		String baFrom, baTo;
-                		Long yearZero = -62146336523773L;
-                		
-                		if (minValue < yearZero)
-                		{
-                			baFrom = " BCE";
-                			
-                			if (maxValue < yearZero)
-                			{
-                				baTo = " BCE";
-                			}
-                			else
-                			{
-                				baTo = " CE";
-                			}
-                		}
-                		else
-                		{
-                			baFrom = " CE";
-                			baTo = " CE";
-                		}
-                		
-                		fromYear.setText(yearFrom+baFrom);
-                		toYear.setText(yearTo+baTo);
-                		//END TEST
-                        Log.i("LocalStories", "User selected new date range: MIN=" + new Date(minValue) + ", MAX=" + new Date(maxValue));
+        	@Override
+            public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Long minValue, Long maxValue) {
+                // handle changed range values
+        	    Calendar myCal;
+        	    myCal= new GregorianCalendar();
+        	    myCal.setTime(new Date(minValue));
+            	yearFrom = myCal.get(Calendar.YEAR) + myCal.get(Calendar.ERA);
+         	    myCal= new GregorianCalendar();
+        	    myCal.setTime(new Date(maxValue));
+        		yearTo = myCal.get(Calendar.YEAR) + myCal.get(Calendar.ERA);
+        		
+        		//TEST on update yearSeek
+        		TextView fromYear = (TextView) findViewById(R.id.fromYearValue);
+        		TextView toYear = (TextView) findViewById(R.id.toYearValue);
+        		
+        		// FIX for displaying correct era
+        		// Log.i("LocalStories", "Min is now" + minValue);
+        		Long yearZero = -62146336523773L;
+        		String baFrom, baTo;
+        		
+        		if (minValue < yearZero)
+        		{
+        			baFrom = " BCE";
+        			
+        			if (maxValue < yearZero)
+        			{
+        				baTo = " BCE";
+        			}
+        			else
+        			{
+        				baTo = " CE";
+        			}
+        		}
+        		else
+        		{
+        			baFrom = " CE";
+        			baTo = " CE";
+        		}
+        		
+        		fromYear.setText(yearFrom+baFrom);
+        		toYear.setText(yearTo+baTo);
+        		//END TEST
+                Log.i("LocalStories", "User selected new date range: MIN=" + new Date(minValue) + ", MAX=" + new Date(maxValue));
                 }
         });
         // add RangeSeekBar to pre-defined layout

@@ -46,7 +46,12 @@ public class MapFragment extends Fragment {
 	    mMapView.setBuiltInZoomControls(true);
 	
 	    mMapController = mMapView.getController();
+	    
+	    GeoPoint gPt = new GeoPoint((int)(MainActivity.lat * 1E6), (int)(MainActivity.lng * 1E6));
+	    // Centre map near to Halden
 	    mMapController.setZoom(13);
+	    mMapController.setCenter(gPt);
+	    //mMapController.animateTo(gPt);
 	
 	    zoom = (ZoomControls) frag.getView().findViewById(R.id.map_zoom_controls);
 	    zoom.setOnZoomInClickListener(new OnClickListener() {
@@ -55,25 +60,19 @@ public class MapFragment extends Fragment {
      	public void onClick(View v) {
      		// TODO Auto-generated method stub
      			
-     			mMapController.setZoom(mMapView.getZoomLevel()+1);
+     		mMapController.setZoom(mMapView.getZoomLevel()+1);
      		}
      	});
       
-             zoom.setOnZoomOutClickListener(new View.OnClickListener() {
+        zoom.setOnZoomOutClickListener(new View.OnClickListener() {
      			
-     		@Override
-     		public void onClick(View v) {
+     	@Override
+     	public void onClick(View v) {
      			// TODO Auto-generated method stub
      		
      		mMapController.setZoom(mMapView.getZoomLevel()-1);
 	     	}
 	     });
-
-
-	     // HIOF: GeoPoint gPt = new GeoPoint(59128879,11353987);
-	     GeoPoint gPt = new GeoPoint((int)(MainActivity.lat * 1E6), (int)(MainActivity.lng * 1E6));
-	     //Centre map near to Halden
-	     mMapController.setCenter(gPt);
     }
 
     /**
