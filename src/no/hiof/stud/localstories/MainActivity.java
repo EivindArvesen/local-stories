@@ -7,33 +7,21 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import no.hiof.stud.localstories.RangeSeekBar.OnRangeSeekBarChangeListener;
-
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
-import org.osmdroid.util.GeoPoint;
-import org.osmdroid.views.MapController;
-import org.osmdroid.views.MapView;
-
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ZoomControls;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 	public final static String EXTRA_MESSAGE = "no.hiof.stud.localstories.MESSAGE";
-	
-	private MapView         mMapView;
-    private MapController   mMapController;
-
-    ZoomControls zoom;
 
     //Search
     private int yearFrom=-1950;
@@ -42,8 +30,8 @@ public class MainActivity extends Activity {
     private Search search = new Search();
     
     //GPS Location
-    private float lat   = 59.123389f;   //in DecimalDegrees
-    private float lng   = 11.446778f;   //in DecimalDegrees
+    public static float lat   = 59.123389f;   //in DecimalDegrees
+    public static float lng   = 11.446778f;   //in DecimalDegrees
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -142,43 +130,27 @@ public class MainActivity extends Activity {
 			}
         });
         
-        // osm-code here
-     	mMapView = (MapView) findViewById(R.id.mapview);
-        mMapView.setTileSource(TileSourceFactory.MAPNIK);
+        // Create new fragment and transaction => osmdroid
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        MapFragment fragment = new MapFragment();
         
-        mMapView.setClickable(true);
-        mMapView.setMultiTouchControls(true);
-        mMapView.setBuiltInZoomControls(true);
+        // Adding
+        fragmentTransaction.add(R.id.fragment_container, fragment, "map_Fragment");
+        //fragmentTransaction.attach(fragment);
+        //fragmentTransaction.show(fragment);
         
-        mMapController = mMapView.getController();
-        mMapController.setZoom(13);
+        /*
+        // Replacing
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        */
         
-        zoom = (ZoomControls) findViewById(R.id.map_zoom_controls);
-        zoom.setOnZoomInClickListener(new OnClickListener() {
-			
-    		@Override
-    		public void onClick(View v) {
-    			// TODO Auto-generated method stub
-    			
-    			mMapController.setZoom(mMapView.getZoomLevel()+1);
-    		}
-    	});
-     
-            zoom.setOnZoomOutClickListener(new View.OnClickListener() {
-    			
-    		@Override
-    		public void onClick(View v) {
-    			// TODO Auto-generated method stub
-    			
-    			mMapController.setZoom(mMapView.getZoomLevel()-1);
-    		}
-    	});
+        // Commiting
+        fragmentTransaction.commit();
         
-        
-        // HIOF: GeoPoint gPt = new GeoPoint(59128879,11353987);
-        GeoPoint gPt = new GeoPoint((int)(lat * 1E6), (int)(lng * 1E6));
-        //Centre map near to Halden
-        mMapController.setCenter(gPt);
+        // Execute pending operations (commit) IMMEDEATELY
+        fragmentManager.executePendingTransactions();
 	}
 
 	@Override
