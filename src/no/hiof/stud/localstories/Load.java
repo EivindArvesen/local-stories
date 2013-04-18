@@ -13,16 +13,16 @@ public class Load {
 		date = "09.04.2013";
 		keywords = "Hello,World,day,thing,programing";
 		evt = new Event(text,date,pictures,keywords);
-		evt.setX(100.0);
-		evt.setY(100.0);
+		evt.setX(59.123389f);
+		evt.setY(11.446778f);
 		Library.addEvent(evt);
 		//Event 2
 		text="Goodbye World";
 		date = "21.12.2012";
 		keywords = "End, of,the,day,thing,programing";
 		evt = new Event(text,date,pictures,keywords);
-		evt.setX(-100.0);
-		evt.setY(-100.0);
+		evt.setX(59.163389f);
+		evt.setY(11.446778f);
 		Library.addEvent(evt);
 	}
 	

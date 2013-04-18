@@ -8,8 +8,8 @@ public class Event {
 	public int month=0;
 	public int year=0;
 	//Location [Posibly temp]
-	private double x=0;
-	private double y=0;
+	private float x=0;
+	private float y=0;
 	//
 	public String[] keywords;
 	
@@ -31,10 +31,10 @@ public class Event {
 	public double getY(){
 		return y;
 	}
-	public void setX(double xx){
+	public void setX(float xx){
 		x=xx;
 	}
-	public void setY(double yy){
+	public void setY(float yy){
 		y=yy;
 	}
 }

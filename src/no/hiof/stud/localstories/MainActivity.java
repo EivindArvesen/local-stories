@@ -36,9 +36,14 @@ public class MainActivity extends Activity {
     ZoomControls zoom;
 
     //Search
-    private int yearFrom;
-    private int yearTo;
+    private int yearFrom=-1950;
+    private int yearTo=2013;
+    private float distance=5;
     private Search search = new Search();
+    
+    //GPS Location
+    private float lat   = 59.123389f;   //in DecimalDegrees
+    private float lng   = 11.446778f;   //in DecimalDegrees
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,8 @@ public class MainActivity extends Activity {
 
 		//Load events
 		Load.load();
+
+	    Log.i("LocalStories", "Start");
         
 		// create RangeSeekBar as Date range between 1950 BCE and now
         Date minDate = null;
@@ -117,6 +124,7 @@ public class MainActivity extends Activity {
 			public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
 				// TODO Auto-generated method stub
 				((TextView) findViewById(R.id.radiusValue)).setText(arg1+"km");
+				distance = arg1;
 				Log.i("LocalStories", "User selected new radiuse: " + arg1);
 				
 			}
@@ -166,8 +174,6 @@ public class MainActivity extends Activity {
     		}
     	});
         
-        float lat   = 59.123389f;   //in DecimalDegrees
-        float lng   = 11.446778f;   //in DecimalDegrees
         
         // HIOF: GeoPoint gPt = new GeoPoint(59128879,11353987);
         GeoPoint gPt = new GeoPoint((int)(lat * 1E6), (int)(lng * 1E6));
@@ -198,8 +204,7 @@ public class MainActivity extends Activity {
 	    EditText freeText = (EditText) findViewById(R.id.edit_message);
 	    String txt = freeText.getText().toString();
 	    search.setText(txt);
-	    //TODO ADD LOCATION
-	    //search.setLocation(x, y, dist);
+	    search.setLocation(lat, lng, distance/111); //Dividing by 111 to transform between km and lat/long
 	    search.start();
 	    //TODO Switch to resultpage
 	    //      Display: search.getList();

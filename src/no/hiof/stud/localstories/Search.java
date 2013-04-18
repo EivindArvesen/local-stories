@@ -2,12 +2,14 @@ package no.hiof.stud.localstories;
 
 import java.util.ArrayList;
 
+import android.util.Log;
+
 public class Search {
 	private ArrayList<Event> events;
 	//Location
 	public double locX=0;
 	public double locY=0;
-	public double distance=0;
+	public float distance=0;
 	//Time
 	public int yearFrom=0;
 	public int yearTo=0;
@@ -21,7 +23,7 @@ public class Search {
 	public void setText(String txt){
 		freeText=txt;
 	}
-	public void setLocation(double x,double y, double dist){
+	public void setLocation(double x,double y, float dist){
 		locX=x;
 		locY=y;
 		distance=dist;
@@ -96,7 +98,11 @@ public class Search {
 			double kat1 = Math.pow(Math.abs(locX-evt.getX()),2.0);
 			double kat2 = Math.pow(Math.abs(locY-evt.getY()),2.0);
 			double dist = Math.sqrt(kat1+kat2);
-			
+
+		    Log.i("LocalStories", "Kat1 "+ kat1);
+		    Log.i("LocalStories", "Kat2 "+ kat2);
+		    Log.i("LocalStories", "Hyp "+ dist);
+		    Log.i("LocalStories", "Dist "+ distance);
 			if(dist>distance){
 				events.remove(i);
 				i--;
