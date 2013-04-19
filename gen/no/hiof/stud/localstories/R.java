@@ -27,13 +27,12 @@ public final class R {
     }
     public static final class id {
         public static final int RadiusSeekBar=0x7f080007;
-        public static final int action_settings=0x7f08000e;
+        public static final int action_settings=0x7f08000d;
         public static final int edit_message=0x7f080000;
         public static final int fragment_container=0x7f08000a;
         public static final int fromYearText=0x7f080002;
         public static final int fromYearValue=0x7f080003;
         public static final int hidden_value=0x7f080004;
-        public static final int listView1=0x7f08000d;
         public static final int map_zoom_controls=0x7f08000c;
         public static final int mapview=0x7f08000b;
         public static final int radiusText=0x7f080008;
@@ -45,9 +44,7 @@ public final class R {
     public static final class layout {
         public static final int activity_display_message=0x7f030000;
         public static final int activity_main=0x7f030001;
-        public static final int event_page=0x7f030002;
-        public static final int map_fragment=0x7f030003;
-        public static final int result_page=0x7f030004;
+        public static final int map_fragment=0x7f030002;
     }
     public static final class menu {
         public static final int display_message=0x7f070000;
