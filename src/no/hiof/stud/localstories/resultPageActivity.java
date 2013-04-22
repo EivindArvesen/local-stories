@@ -23,7 +23,6 @@ import android.view.View;
 
 public class ResultPageActivity extends Activity {
 	public final static String EVENT_ID = "1";
-	private int evt_id =0;
 
 		  @Override
 		  protected void onCreate(Bundle savedInstanceState) {
@@ -58,33 +57,20 @@ public class ResultPageActivity extends Activity {
 		    }
 
 		    Log.i("LocalStories", "3");
-		    final StableArrayAdapter adapter = new StableArrayAdapter(this,
-		        android.R.layout.simple_list_item_1, list);
+		    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+		    		R.layout.item, R.id.label, values);
 		    listview.setAdapter(adapter);
 
 		    listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 		      @Override
 		      public void onItemClick(AdapterView<?> parent, final View view,
-		          int position, long id) {
-		    	  evt_id=(int) id;
-	        	    
-		        final String item = (String) parent.getItemAtPosition(position);
-		        view.animate().setDuration(2000).alpha(0)
-		            .withEndAction(new Runnable() {
-		              @Override
-		              public void run() {
-		            	  //TODO Change page to Event page
-		                /*list.remove(item);
-		                adapter.notifyDataSetChanged();
-		                view.setAlpha(1);*/
-		                //HERE 
-		                String id=Search.getList().get(evt_id).id+"";
-		                Intent intent = new Intent(getApplicationContext(), EventActivity.class);
-		                intent.putExtra(EVENT_ID, id);
-		        	    startActivity(intent);
-		              }
-		            });
+				int position, long id) {
+				
+				String ide = Search.getList().get((int) id).id+"";
+				Intent intent = new Intent(getApplicationContext(), EventActivity.class);
+				intent.putExtra(EVENT_ID, ide);
+				startActivity(intent);
 		      }
 
 		    });
