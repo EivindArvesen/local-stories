@@ -9,17 +9,16 @@ package no.hiof.stud.localstories;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.util.Log;
-import android.view.View;
 
 public class ResultPageActivity extends Activity {
 	public final static String EVENT_ID = "1";
