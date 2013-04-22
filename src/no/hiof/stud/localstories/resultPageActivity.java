@@ -57,7 +57,7 @@ public class ResultPageActivity extends Activity {
 		    }
 
 		    Log.i("LocalStories", "3");
-		    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+		    StableArrayAdapter adapter = new StableArrayAdapter(this,
 		    		R.layout.item, R.id.label, values);
 		    listview.setAdapter(adapter);
 
@@ -80,11 +80,11 @@ public class ResultPageActivity extends Activity {
 
 		    HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
 
-		    public StableArrayAdapter(Context context, int textViewResourceId,
-		        List<String> objects) {
-		      super(context, textViewResourceId, objects);
-		      for (int i = 0; i < objects.size(); ++i) {
-		        mIdMap.put(objects.get(i), i);
+		    public StableArrayAdapter(Context context, int viewResourceId, int textViewResourceId,
+		        String[] values) {
+		      super(context, viewResourceId, textViewResourceId, values);
+		      for (int i = 0; i < values.length; ++i) {
+		        mIdMap.put(values[i], i);
 		      }
 		    }
 

@@ -4,7 +4,7 @@
     android:layout_height="wrap_content" >
 
     <ImageView
-        android:id="@+id/icon"
+        android:id="@+id/picture"
         android:layout_width="44dp"
         android:layout_height="44dp"
         android:layout_marginLeft="4dp"
@@ -13,21 +13,25 @@
         android:src="@drawable/ic_launcher" >
     </ImageView>
 
-    <TextView
-        android:id="@+id/label"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@+id/label"
-        android:textSize="20sp" >
-    </TextView>
-    <TextView
-        android:id="@+id/date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@+id/date"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="-90dp"
-        android:textSize="15sp" >
-    </TextView>
+        android:layout_weight="12.50"
+        android:orientation="vertical" >
 
-</LinearLayout> 
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@+id/label"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XX/XX XXXX"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</LinearLayout>
