@@ -141,6 +141,32 @@
             android:paddingTop="4dp"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 	</TableRow>
+	
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:weightSum="1.0" >
+
+        <Button
+            android:id="@+id/button1"
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="@string/button_map"
+            android:onClick="mapView" />
+
+        <Button
+            android:id="@+id/button2"
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="@string/button_list"
+            android:onClick="listView" />
+	    
+	</TableRow>
 
     <RelativeLayout
 	    android:id="@+id/fragment_container"

@@ -29,7 +29,7 @@ public class ResultPageActivity extends Activity {
 			    Log.i("LocalStories", "1");
 		    super.onCreate(savedInstanceState);
 
-		    setContentView(R.layout.activity_result_page);
+		    setContentView(R.layout.list_fragment);
 
 		    Log.i("LocalStories", "2");
 		    

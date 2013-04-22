@@ -141,6 +141,7 @@ public class MainActivity extends FragmentActivity {
 			}
         });
         
+        search();
         
         // Create new fragment and transaction => osmdroid
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -173,15 +174,8 @@ public class MainActivity extends FragmentActivity {
 		return true;
 	}
 	
-	/** Called when the user clicks the Send button */
-	public void sendMessage(View view) {
-	    // Do something in response to button
-		/*Intent intent = new Intent(this, DisplayMessageActivity.class);
-	    EditText editText = (EditText) findViewById(R.id.edit_message);
-	    String message = editText.getText().toString();
-	    intent.putExtra(EXTRA_MESSAGE, message);
-	    startActivity(intent);*/
-	    //SEARCH
+	public void search()
+	{
 		search.resetSearch();
 	    Log.i("LocalStories", "From "+ yearFrom);
 	    Log.i("LocalStories", "To " + yearTo);
@@ -191,11 +185,64 @@ public class MainActivity extends FragmentActivity {
 	    search.setText(txt);
 	    search.setLocation(lat, lng, distance/111); //Dividing by 111 to transform between km and lat/long
 	    search.start();
-	    //TODO Switch to resultpage
+	}
+	
+	/** Called when the user clicks the Search button */
+	public void sendMessage(View view) {
+		// This method should populate the view (map fragment/list fragment) with relevant results.
+		
+	    // Do something in response to button
+		/*Intent intent = new Intent(this, DisplayMessageActivity.class);
+	    EditText editText = (EditText) findViewById(R.id.edit_message);
+	    String message = editText.getText().toString();
+	    intent.putExtra(EXTRA_MESSAGE, message);
+	    startActivity(intent);*/
+	    //SEARCH
+		search();
+	    //TODO 
 	    //      Display: search.getList();
-	    Log.i("LocalStories", search.getList().size()+" results");
-	    Intent intent = new Intent(this, ResultPageActivity.class);
-	    startActivity(intent);
+	    Log.i("LocalStories", Search.getList().size()+" results");
+	    //Intent intent = new Intent(this, ResultPageActivity.class);
+	    //startActivity(intent);
+        
+	}
+	
+	/** Called when the user clicks the "Map View" button */
+	public void mapView(View view) {
+		search();
+		// Create new fragment and transaction => osmdroid
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        MapFragment fragment = new MapFragment();
+
+        // Replacing
+        fragmentTransaction.replace(R.id.fragment_container, fragment, "map_Fragment");
+        fragmentTransaction.addToBackStack(null);
+        
+        // Commiting
+        fragmentTransaction.commit();
+        
+        // Execute pending operations (commit) IMMEDEATELY
+        fragmentManager.executePendingTransactions();
+	}
+	
+	/** Called when the user clicks the "List View" button */
+	public void listView(View view) {
+		search();
+		// Create new fragment and transaction => osmdroid
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        ListFragment fragment = new ListFragment();
+
+        // Replacing
+        fragmentTransaction.replace(R.id.fragment_container, fragment, "list_Fragment");
+        fragmentTransaction.addToBackStack(null);
+        
+        // Commiting
+        fragmentTransaction.commit();
+        
+        // Execute pending operations (commit) IMMEDEATELY
+        fragmentManager.executePendingTransactions();
         
 	}
 
