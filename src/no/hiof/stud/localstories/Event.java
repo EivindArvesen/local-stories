@@ -1,6 +1,8 @@
 package no.hiof.stud.localstories;
 
 public class Event {
+	public int id;
+	private static int idcount=0;
 	public String text;
 	public int[] pictures;
 	//Year
@@ -8,12 +10,14 @@ public class Event {
 	public int month=0;
 	public int year=0;
 	//Location [Posibly temp]
-	private float x=0;
-	private float y=0;
+	private double x=0;
+	private double y=0;
 	//
 	public String[] keywords;
 	
 	public Event(String txt, String date, int[] pics, String keys){
+		id=idcount;
+		idcount++;
 		text=txt;
 		pictures=pics;
 		String[] dte=date.split("[.]");
@@ -31,10 +35,10 @@ public class Event {
 	public double getY(){
 		return y;
 	}
-	public void setX(float xx){
+	public void setX(double xx){
 		x=xx;
 	}
-	public void setY(float yy){
+	public void setY(double yy){
 		y=yy;
 	}
 }

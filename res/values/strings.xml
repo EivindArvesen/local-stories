@@ -15,5 +15,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_display_message">My Message</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_result_page">ResultPageActivity</string>
+    <string name="title_activity_event">EventActivity</string>
 
 </resources>

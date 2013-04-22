@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import android.util.Log;
 
 public class Search {
-	private ArrayList<Event> events;
+	private static ArrayList<Event> events;
 	//Location
 	public double locX=0;
 	public double locY=0;
@@ -45,7 +45,7 @@ public class Search {
 		if(freeText!="") freeTextFilter();
 		
 	}
-	public ArrayList<Event> getList(){
+	public static ArrayList<Event> getList(){
 		return events;
 	}
 	

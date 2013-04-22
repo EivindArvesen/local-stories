@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import no.hiof.stud.localstories.RangeSeekBar.OnRangeSeekBarChangeListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -140,6 +141,7 @@ public class MainActivity extends FragmentActivity {
 			}
         });
         
+        
         // Create new fragment and transaction => osmdroid
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -161,6 +163,7 @@ public class MainActivity extends FragmentActivity {
         
         // Execute pending operations (commit) IMMEDEATELY
         fragmentManager.executePendingTransactions();
+        
 	}
 
 	@Override
@@ -191,6 +194,8 @@ public class MainActivity extends FragmentActivity {
 	    //TODO Switch to resultpage
 	    //      Display: search.getList();
 	    Log.i("LocalStories", search.getList().size()+" results");
+	    Intent intent = new Intent(this, ResultPageActivity.class);
+	    startActivity(intent);
         
 	}
 
