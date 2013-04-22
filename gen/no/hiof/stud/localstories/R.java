@@ -34,9 +34,9 @@ public final class R {
         public static final int fromYearText=0x7f080003;
         public static final int fromYearValue=0x7f080004;
         public static final int hidden_value=0x7f080005;
-        public static final int listView1=0x7f08000e;
-        public static final int map_zoom_controls=0x7f08000d;
-        public static final int mapview=0x7f08000c;
+        public static final int listView1=0x7f08000c;
+        public static final int map_zoom_controls=0x7f08000e;
+        public static final int mapview=0x7f08000d;
         public static final int menu_settings=0x7f08000f;
         public static final int radiusText=0x7f080009;
         public static final int radiusValue=0x7f08000a;
@@ -50,7 +50,6 @@ public final class R {
         public static final int activity_main=0x7f030002;
         public static final int activity_result_page=0x7f030003;
         public static final int map_fragment=0x7f030004;
-        public static final int result_page=0x7f030005;
     }
     public static final class menu {
         public static final int activity_event=0x7f070000;

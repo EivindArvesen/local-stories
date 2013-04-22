@@ -28,7 +28,7 @@ public class resPageActivity extends Activity {
 			    Log.i("LocalStories", "1");
 		    super.onCreate(savedInstanceState);
 
-		    setContentView(R.layout.result_page);
+		    setContentView(R.layout.activity_result_page);
 
 		    Log.i("LocalStories", "2");
 		    

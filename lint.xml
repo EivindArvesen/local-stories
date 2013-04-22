@@ -2,5 +2,6 @@
 <lint>
     <issue id="NewApi">
         <ignore path="src\no\hiof\stud\localstories\ResultPageActivity.java" />
+        <ignore path="src\no\hiof\stud\localstories\resPageActivity.java" />
     </issue>
 </lint>
