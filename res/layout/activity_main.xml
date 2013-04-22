@@ -144,6 +144,13 @@
 	
     <TableRow
         android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#191B19"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin" />
+	
+    <TableRow
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" 
         android:weightSum="1.0" >
@@ -153,20 +160,32 @@
             style="?android:attr/buttonBarStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight=".5"
+            android:layout_weight=".4975"
             android:text="@string/button_map"
             android:onClick="mapView" />
+        
+        <TableRow
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.005"
+        android:background="#191B19" />
 
         <Button
             android:id="@+id/button2"
             style="?android:attr/buttonBarStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight=".5"
+            android:layout_weight=".4975"
             android:text="@string/button_list"
             android:onClick="listView" />
-	    
 	</TableRow>
+	
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#191B19"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin" />
 
     <RelativeLayout
 	    android:id="@+id/fragment_container"
