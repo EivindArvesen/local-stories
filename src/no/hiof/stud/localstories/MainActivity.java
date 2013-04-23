@@ -9,6 +9,7 @@ import java.util.GregorianCalendar;
 import no.hiof.stud.localstories.RangeSeekBar.OnRangeSeekBarChangeListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -107,6 +108,7 @@ public class MainActivity extends FragmentActivity {
         		fromYear.setText(yearFrom+baFrom);
         		toYear.setText(yearTo+baTo);
         		//END TEST
+        		search();
                 Log.i("LocalStories", "User selected new date range: MIN=" + new Date(minValue) + ", MAX=" + new Date(maxValue));
                 }
         });
@@ -124,6 +126,7 @@ public class MainActivity extends FragmentActivity {
 				// TODO Auto-generated method stub
 				((TextView) findViewById(R.id.radiusValue)).setText(arg1+"km");
 				distance = arg1;
+				search();
 				Log.i("LocalStories", "User selected new radiuse: " + arg1);
 				
 			}
@@ -153,12 +156,6 @@ public class MainActivity extends FragmentActivity {
         //fragmentTransaction.attach(fragment);
         //fragmentTransaction.show(fragment);
         
-        /*
-        // Replacing
-        fragmentTransaction.replace(R.id.fragment_container, fragment);
-        fragmentTransaction.addToBackStack(null);
-        */
-        
         // Commiting
         fragmentTransaction.commit();
         
@@ -175,8 +172,8 @@ public class MainActivity extends FragmentActivity {
 	}
 	
 	public void search()
-	{
-		search.resetSearch();
+	{	
+		//search.resetSearch();
 	    Log.i("LocalStories", "From "+ yearFrom);
 	    Log.i("LocalStories", "To " + yearTo);
 	    search.setYear(yearFrom, yearTo);
@@ -185,11 +182,34 @@ public class MainActivity extends FragmentActivity {
 	    search.setText(txt);
 	    search.setLocation(lat, lng, distance/111); //Dividing by 111 to transform between km and lat/long
 	    search.start();
+	    updateFragment();
+	}
+	
+	public void updateFragment()
+	{
+		// Find current fragment        
+        Fragment frag = getSupportFragmentManager().findFragmentByTag("map_Fragment");
+        
+        try {
+        	if (frag.isVisible())
+            {
+            	mapView(this.findViewById(android.R.id.content));
+            }
+            
+            frag = getSupportFragmentManager().findFragmentByTag("list_Fragment");
+            if (frag.isVisible())
+            {
+            	listView(this.findViewById(android.R.id.content));
+            }
+        }
+        	catch (NullPointerException e)
+        	{
+        		Log.i("LocalStories", "First run of method updateFragment(), via method search() - no need to update.");
+        	}        
 	}
 	
 	/** Called when the user clicks the Search button */
 	public void sendMessage(View view) {
-		// This method should populate the view (map fragment/list fragment) with relevant results.
 		
 	    // Do something in response to button
 		/*Intent intent = new Intent(this, DisplayMessageActivity.class);
@@ -209,7 +229,6 @@ public class MainActivity extends FragmentActivity {
 	
 	/** Called when the user clicks the "Map View" button */
 	public void mapView(View view) {
-		search();
 		// Create new fragment and transaction => osmdroid
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -224,11 +243,12 @@ public class MainActivity extends FragmentActivity {
         
         // Execute pending operations (commit) IMMEDEATELY
         fragmentManager.executePendingTransactions();
+        
+        // TODO: Populate map with relevant results
 	}
 	
 	/** Called when the user clicks the "List View" button */
 	public void listView(View view) {
-		search();
 		// Create new fragment and transaction => osmdroid
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -244,6 +264,7 @@ public class MainActivity extends FragmentActivity {
         // Execute pending operations (commit) IMMEDEATELY
         fragmentManager.executePendingTransactions();
         
+        // TODO: Populate list with relevant results
 	}
 
 }
