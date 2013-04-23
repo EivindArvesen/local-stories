@@ -15,10 +15,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class ResultPageActivity extends Activity {
 	public final static String EVENT_ID = "1";
@@ -41,9 +44,6 @@ public class ResultPageActivity extends Activity {
 		    	values[i] = events.get(i).text;
 		    	
 		    }
-		    
-		    
-		    
 		    /*String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
 		        "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
 		        "Linux", "OS/2", "Ubuntu", "Windows7", "Max OS X", "Linux",
@@ -57,7 +57,7 @@ public class ResultPageActivity extends Activity {
 
 		    Log.i("LocalStories", "3");
 		    StableArrayAdapter adapter = new StableArrayAdapter(this,
-		    		R.layout.item, R.id.label, values);
+		    		R.layout.item, R.id.label, values, events);
 		    listview.setAdapter(adapter);
 
 		    listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -76,12 +76,14 @@ public class ResultPageActivity extends Activity {
 		  }
 
 		  private class StableArrayAdapter extends ArrayAdapter<String> {
+			  ArrayList<Event> events;
 
 		    HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
 
 		    public StableArrayAdapter(Context context, int viewResourceId, int textViewResourceId,
-		        String[] values) {
+		        String[] values, ArrayList<Event> evts) {
 		      super(context, viewResourceId, textViewResourceId, values);
+		    	events=evts;
 		      for (int i = 0; i < values.length; ++i) {
 		        mIdMap.put(values[i], i);
 		      }
@@ -96,6 +98,16 @@ public class ResultPageActivity extends Activity {
 		    @Override
 		    public boolean hasStableIds() {
 		      return true;
+		    }
+		    
+		    //Unsure if/how this works, needs testing
+		    public View getView(int position, View convertView, ViewGroup viewGroup) {
+		        Event event = events.get(position);
+		        TextView tvContact = (TextView) convertView.findViewById(R.id.date);
+		        tvContact.setText(event.day + "/" + event.month+ " " +event.year);
+
+		        
+		        return convertView;
 		    }
 
 		  }
