@@ -48,6 +48,6 @@
             android:name="no.hiof.stud.localstories.EventActivity"
             android:label="@string/title_activity_event" >
         </activity>
+        <meta-data android:name="CLOUDMADE_KEY" android:value="a4d8c7fac92e46168a440578f2410825" />
     </application>
-
 </manifest>

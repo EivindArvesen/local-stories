@@ -1,10 +1,12 @@
 package no.hiof.stud.localstories;
 
+import org.osmdroid.tileprovider.LRUMapTileCache;
+import org.osmdroid.tileprovider.MapTileProviderBase;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.tileprovider.util.CloudmadeUtil;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapController;
 import org.osmdroid.views.MapView;
-import org.osmdroid.views.util.constants.MapViewConstants;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -40,9 +42,17 @@ public class MapFragment extends Fragment {
         // OSMdroid-code here
         Fragment frag = getFragmentManager().findFragmentByTag("map_Fragment");
 	    mMapView = (MapView) frag.getView().findViewById(R.id.mapview);
-	    mMapView.setTileSource(TileSourceFactory.MAPNIK);
-	
-	    //mMapView.setClickable(true);
+	    
+	    CloudmadeUtil.retrieveCloudmadeKey(getActivity());
+	    mMapView.setTileSource(TileSourceFactory.CLOUDMADESTANDARDTILES); // previously MAPNIK
+	    
+	    // Increase cache
+	    final MapTileProviderBase mapTileProvider = this.mMapView.getTileProvider();
+	    int pCapacity=35;
+	    mapTileProvider.ensureCapacity(pCapacity);
+	    LRUMapTileCache capacity = new LRUMapTileCache(pCapacity);
+	    capacity.ensureCapacity(pCapacity);
+	    
 	    mMapView.setMultiTouchControls(true);
 	    mMapView.setBuiltInZoomControls(true);
 	
@@ -73,6 +83,9 @@ public class MapFragment extends Fragment {
      		Log.i("LocalStories", "Zoom level now: " + mMapView.getZoomLevel());
 	     	}
 	     });
+        
+        // add listener for "go to my position"
+        // mMapView.getController().animateTo(yourPosition);
     }
 
     /**
