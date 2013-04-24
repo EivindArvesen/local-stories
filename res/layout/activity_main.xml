@@ -145,7 +145,7 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#191B19"
+        android:background="#666666"
 	    android:paddingLeft="@dimen/activity_horizontal_margin"
 	    android:paddingRight="@dimen/activity_horizontal_margin" />
 	
@@ -157,6 +157,7 @@
 
         <Button
             android:id="@+id/button1"
+            android:background="#1C96D0"
             style="?android:attr/buttonBarStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -168,10 +169,11 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.005"
-        android:background="#191B19" />
+        android:background="#666666" />
 
         <Button
             android:id="@+id/button2"
+            android:background="#1C96D0"
             style="?android:attr/buttonBarStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -183,13 +185,14 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#191B19"
+        android:background="#666666"
 	    android:paddingLeft="@dimen/activity_horizontal_margin"
 	    android:paddingRight="@dimen/activity_horizontal_margin" />
 
     <RelativeLayout
 	    android:id="@+id/fragment_container"
 	    android:layout_width="match_parent"
-	    android:layout_height="match_parent" />
+	    android:layout_height="0dp"
+	    android:layout_weight="1" />
 
 </LinearLayout>

@@ -58,8 +58,6 @@ public class MapFragment extends Fragment {
      	
      	@Override
      	public void onClick(View v) {
-     		// TODO Auto-generated method stub
-     			
      		mMapController.setZoom(mMapView.getZoomLevel()+1);
      		}
      	});
@@ -68,8 +66,6 @@ public class MapFragment extends Fragment {
      			
      	@Override
      	public void onClick(View v) {
-     			// TODO Auto-generated method stub
-     		
      		mMapController.setZoom(mMapView.getZoomLevel()-1);
 	     	}
 	     });
