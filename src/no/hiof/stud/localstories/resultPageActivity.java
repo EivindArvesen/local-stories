@@ -60,6 +60,7 @@ public class ResultPageActivity extends Activity {
 		    		R.layout.item, R.id.label, values, events);
 		    listview.setAdapter(adapter);
 
+		    
 		    listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 		      @Override
@@ -100,15 +101,7 @@ public class ResultPageActivity extends Activity {
 		      return true;
 		    }
 		    
-		    //Unsure if/how this works, needs testing
-		    public View getView(int position, View convertView, ViewGroup viewGroup) {
-		        Event event = events.get(position);
-		        TextView tvContact = (TextView) convertView.findViewById(R.id.date);
-		        tvContact.setText(event.day + "/" + event.month+ " " +event.year);
-
-		        
-		        return convertView;
-		    }
+		    
 
 		  }
 
