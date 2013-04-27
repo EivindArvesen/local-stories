@@ -23,7 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ResultPageActivity extends Activity {
+public class resultPageActivity extends Activity {
 	public final static String EVENT_ID = "1";
 
 		  @Override
