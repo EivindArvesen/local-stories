@@ -3,16 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     
-	<org.osmdroid.views.MapView 
-		android:id="@+id/mapview"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent" />
-	        
-	<ZoomControls
-		android:id="@+id/map_zoom_controls"
-		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-		android:layout_alignParentBottom="true" 
-		android:layout_centerHorizontal="true" />
+    <org.osmdroid.views.MapView 
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+        
+        <ZoomControls
+        android:id="@+id/map_zoom_controls"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+	    android:layout_alignParentBottom="true" 
+	    android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
