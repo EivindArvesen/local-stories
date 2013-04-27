@@ -14,7 +14,7 @@ public class EventActivity extends Activity {
 		setContentView(R.layout.activity_event);
 		
 		Intent intent = getIntent();
-	    String message = intent.getStringExtra(ResultPageActivity.EVENT_ID);
+	    String message = intent.getStringExtra(resultPageActivity.EVENT_ID);
 	    int id= Integer.parseInt(message);
 	    Event event= Library.Events.get(id);
 	    TextView EventText = (TextView) findViewById(R.id.EventText);

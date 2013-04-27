@@ -193,7 +193,6 @@ public class MainActivity extends FragmentActivity {
 	{
 		// Find current fragment        
         Fragment frag = getSupportFragmentManager().findFragmentByTag("map_Fragment");
-        
         try {
         	if (frag.isVisible())
             {
@@ -215,7 +214,7 @@ public class MainActivity extends FragmentActivity {
 	/** Called when the user clicks the Search button */
 	public void sendMessage(View view) {
 		
-	    // Do something in response to button
+	    // Do something in response to search- button
 		/*Intent intent = new Intent(this, DisplayMessageActivity.class);
 	    EditText editText = (EditText) findViewById(R.id.edit_message);
 	    String message = editText.getText().toString();
@@ -249,6 +248,7 @@ public class MainActivity extends FragmentActivity {
         fragmentManager.executePendingTransactions();
         
         // TODO: Populate map with relevant results
+        
 	}
 	
 	/** Called when the user clicks the "List View" button */
