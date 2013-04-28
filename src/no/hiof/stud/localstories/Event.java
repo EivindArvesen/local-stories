@@ -3,6 +3,7 @@ package no.hiof.stud.localstories;
 public class Event {
 	public int id;
 	private static int idcount=0;
+	public String header;
 	public String text;
 	public int[] pictures;
 	//Year
@@ -15,9 +16,10 @@ public class Event {
 	//
 	public String[] keywords;
 	
-	public Event(String txt, String date, int[] pics, String keys){
+	public Event(String head, String txt, String date, int[] pics, String keys){
 		id=idcount;
 		idcount++;
+		header=head;
 		text=txt;
 		pictures=pics;
 		String[] dte=date.split("[.]");

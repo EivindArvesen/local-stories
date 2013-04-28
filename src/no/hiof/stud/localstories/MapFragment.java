@@ -142,9 +142,19 @@ public class MapFragment extends Fragment {
 	    for(int i=0; i<events.size(); i++){
 	    	GeoPoint eventPoint = decimalDegreesToGeoPoint((float) events.get(i).getLat(), (float) events.get(i).getLng());
 	    	myItemizedOverlay.addItem(eventPoint, "Event " + i, "Event " + i);
+	    	
+	    	// Listener for clicks on events...	    	
+	    	//eventId = mMapView.findViewById(myItemizedOverlay.getId());
+	    	//myItemizedOverlay.onTouchEvent(event, mMapView);
+	    	    	
+	    	//Log.i("LocalStories", "marker: ");
+	    	/*.setOnClickListener(new OnClickListener() {
+		         @Override
+		         public void onClick(View v) {
+		                 Log.i("LocalStories", "Clicked on event!");  
+		         }
+			 });*/
 	    }
-	    //MyItemizedOverlay.setFocusItemsOnTap(true);
-	    //MyItemizedOverlay.setFocusedItem(0);
     }
     
     protected static GeoPoint decimalDegreesToGeoPoint(float lat, float lng)

@@ -39,7 +39,7 @@ public class ListFragment extends Fragment {
 	    ArrayList<Event> events = Search.getList();
 	    String[] values = new String[events.size()];
 	    for(int i=0; i<events.size(); i++){
-	    	values[i] = events.get(i).text;
+	    	values[i] = events.get(i).header;
 	    	
 	    }
 
