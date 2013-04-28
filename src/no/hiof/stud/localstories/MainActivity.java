@@ -7,6 +7,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import no.hiof.stud.localstories.RangeSeekBar.OnRangeSeekBarChangeListener;
+
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapController;
+import org.osmdroid.views.MapView;
+
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -23,6 +28,9 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity {
+	private MapView         mMapView;
+    private MapController   mMapController;
+    
 	public final static String EXTRA_MESSAGE = "no.hiof.stud.localstories.MESSAGE";
 
     //Search
@@ -30,8 +38,6 @@ public class MainActivity extends FragmentActivity {
     private int yearTo=2013;
     private float distance=5;
     private Search search = new Search();
-    
-    // HIOF: GeoPoint gPt = new GeoPoint(59128879,11353987);
     
     //GPS Location
     public static float lat   = 59.128221f;   //in DecimalDegrees
@@ -164,7 +170,7 @@ public class MainActivity extends FragmentActivity {
         
         // Execute pending operations (commit) IMMEDEATELY
         fragmentManager.executePendingTransactions();
-        
+        showLocation(this.findViewById(android.R.id.content));
 	}
 
 	@Override
@@ -192,7 +198,8 @@ public class MainActivity extends FragmentActivity {
 	{
 		// Find current fragment        
         Fragment frag = getSupportFragmentManager().findFragmentByTag("map_Fragment");
-        try {
+        try
+        {
         	if (frag.isVisible())
             {
             	mapView(this.findViewById(android.R.id.content));
@@ -204,10 +211,10 @@ public class MainActivity extends FragmentActivity {
             	listView(this.findViewById(android.R.id.content));
             }
         }
-        	catch (NullPointerException e)
-        	{
-        		Log.i("LocalStories", "First run of method updateFragment(), via method search() - no need to update.");
-        	}        
+    	catch (NullPointerException e)
+    	{
+    		Log.i("LocalStories", "First run of method updateFragment(), via method search() - no need to update.");
+    	}  
 	}
 	
 	/** Called when the user clicks the Search button */
@@ -245,9 +252,6 @@ public class MainActivity extends FragmentActivity {
         
         // Execute pending operations (commit) IMMEDEATELY
         fragmentManager.executePendingTransactions();
-        
-        // TODO: Populate map with relevant results
-        
 	}
 	
 	/** Called when the user clicks the "List View" button */
@@ -266,8 +270,17 @@ public class MainActivity extends FragmentActivity {
         
         // Execute pending operations (commit) IMMEDEATELY
         fragmentManager.executePendingTransactions();
-        
-        // TODO: Populate list with relevant results
+	}
+	
+	/** Called when the user clicks the "Update Location" button */
+	public void updateLocation(View view) {
+		// TODO: Manually update current location
+        Log.i("LocalStories", "Manually update current location here...");
+	}
+	
+	/** Called when the user clicks the "Show Location" button */
+	public void showLocation(View view) {
+		mapView(this.findViewById(android.R.id.content));
 	}
 
 }

@@ -5,13 +5,17 @@ import java.util.ArrayList;
 import org.osmdroid.ResourceProxy;
 import org.osmdroid.api.IMapView;
 import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedOverlay;
 import org.osmdroid.views.overlay.OverlayItem;
- 
+
+import android.app.AlertDialog;
+import android.content.Context;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
  
 public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
+	private Context mContext;
   
 	 private ArrayList<OverlayItem> overlayItemList = new ArrayList<OverlayItem>();
 	 
@@ -43,6 +47,16 @@ public class MyItemizedOverlay extends ItemizedOverlay<OverlayItem> {
 	 public int size() {
 	  // TODO Auto-generated method stub
 	  return overlayItemList.size();
+	 }
+	 
+	 protected boolean onTap(int index)
+	 {
+		 OverlayItem item = overlayItemList.get(index);
+		 AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+		 dialog.setTitle(item.getTitle());
+		 dialog.setMessage(item.getSnippet());
+		 dialog.show();
+		 return true;
 	 }
  
 }

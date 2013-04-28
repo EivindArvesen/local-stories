@@ -31,6 +31,8 @@ public class MapFragment extends Fragment {
     
     MyItemizedOverlay myItemizedOverlay = null;
     
+    public Boolean showLocation = false;
+    
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,11 +69,6 @@ public class MapFragment extends Fragment {
 	    mMapController = mMapView.getController();
 	    
 	    GeoPoint gPt= decimalDegreesToGeoPoint(MainActivity.lat, MainActivity.lng);
-	    // Centre map near to Halden
-	    mMapController.setZoom(13);
-	    mMapController.setCenter(gPt);
-	    
-	    //mMapController.animateTo(gPt);
 	    
 	    zoom = (ZoomControls) frag.getView().findViewById(R.id.map_zoom_controls);
 	    zoom.setOnZoomInClickListener(new OnClickListener() {
@@ -92,12 +89,13 @@ public class MapFragment extends Fragment {
 	     	}
 	     });
         
+    	mMapController.setZoom(13);
+	    //mMapController.setCenter(gPt);
+	    mMapController.animateTo(gPt);
+        
         // Add overlays for current position and relevant events (default args or results from search)
         addOverlayCurrentPosition(gPt);
         addOverlays();
-        
-        // add listener for "go to my position"
-        // mMapView.getController().animateTo(yourPosition);
     }
 
     /**
@@ -145,9 +143,11 @@ public class MapFragment extends Fragment {
 	    	GeoPoint eventPoint = decimalDegreesToGeoPoint((float) events.get(i).getLat(), (float) events.get(i).getLng());
 	    	myItemizedOverlay.addItem(eventPoint, "Event " + i, "Event " + i);
 	    }
+	    //MyItemizedOverlay.setFocusItemsOnTap(true);
+	    //MyItemizedOverlay.setFocusedItem(0);
     }
     
-    protected GeoPoint decimalDegreesToGeoPoint(float lat, float lng)
+    protected static GeoPoint decimalDegreesToGeoPoint(float lat, float lng)
     {
     	return new GeoPoint((int)(lat * 1E6), (int)(lng * 1E6));
     }
