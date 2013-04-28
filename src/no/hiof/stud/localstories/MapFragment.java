@@ -1,5 +1,7 @@
 package no.hiof.stud.localstories;
 
+import java.util.ArrayList;
+
 import org.osmdroid.DefaultResourceProxyImpl;
 import org.osmdroid.ResourceProxy;
 import org.osmdroid.tileprovider.LRUMapTileCache;
@@ -10,6 +12,7 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapController;
 import org.osmdroid.views.MapView;
 
+import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -63,7 +66,7 @@ public class MapFragment extends Fragment {
 	
 	    mMapController = mMapView.getController();
 	    
-	    GeoPoint gPt = new GeoPoint((int)(MainActivity.lat * 1E6), (int)(MainActivity.lng * 1E6));
+	    GeoPoint gPt= decimalDegreesToGeoPoint(MainActivity.lat, MainActivity.lng);
 	    // Centre map near to Halden
 	    mMapController.setZoom(13);
 	    mMapController.setCenter(gPt);
@@ -90,6 +93,7 @@ public class MapFragment extends Fragment {
 	     });
         
         // Add overlays for current position and relevant events (default args or results from search)
+        addOverlayCurrentPosition(gPt);
         addOverlays();
         
         // add listener for "go to my position"
@@ -98,7 +102,29 @@ public class MapFragment extends Fragment {
 
     /**
      * An appropriate place to override and add overlays.
+     * @param gPt = current position
      */
+    
+    protected void addOverlayCurrentPosition(GeoPoint gPt) {
+    	Drawable marker=getResources().getDrawable(android.R.drawable.btn_star_big_on);
+    	int iconColor = android.graphics.Color.rgb(38, 181, 225);
+    	marker.setColorFilter( iconColor, Mode.SRC_ATOP );
+    	
+        int markerWidth = marker.getIntrinsicWidth();
+        int markerHeight = marker.getIntrinsicHeight();
+        marker.setBounds(0, markerHeight, markerWidth, 0);
+         
+        ResourceProxy resourceProxy = new DefaultResourceProxyImpl(getActivity());
+         
+        myItemizedOverlay = new MyItemizedOverlay(marker, resourceProxy);
+        
+        Fragment frag = getFragmentManager().findFragmentByTag("map_Fragment");
+	    mMapView = (MapView) frag.getView().findViewById(R.id.mapview);
+        mMapView.getOverlays().add(myItemizedOverlay);
+         
+        myItemizedOverlay.addItem(gPt, "currentPosition", "currentPosition");
+    }
+    
     protected void addOverlays() {
     	Drawable marker=getResources().getDrawable(android.R.drawable.star_big_on);
         int markerWidth = marker.getIntrinsicWidth();
@@ -112,10 +138,17 @@ public class MapFragment extends Fragment {
         Fragment frag = getFragmentManager().findFragmentByTag("map_Fragment");
 	    mMapView = (MapView) frag.getView().findViewById(R.id.mapview);
         mMapView.getOverlays().add(myItemizedOverlay);
-         
-        GeoPoint myPoint1 = new GeoPoint(0*1000000, 0*1000000);
-        myItemizedOverlay.addItem(myPoint1, "myPoint1", "myPoint1");
-        GeoPoint myPoint2 = new GeoPoint(50*1000000, 50*1000000);
-        myItemizedOverlay.addItem(myPoint2, "myPoint2", "myPoint2");
+        
+        ArrayList<Event> events = Search.getList();
+        Log.i("LocalStories", "Events size: "+events.size());
+	    for(int i=0; i<events.size(); i++){
+	    	GeoPoint eventPoint = decimalDegreesToGeoPoint((float) events.get(i).getX(), (float) events.get(i).getY());
+	    	myItemizedOverlay.addItem(eventPoint, "Event " + i, "Event " + i);
+	    }
+    }
+    
+    protected GeoPoint decimalDegreesToGeoPoint(float lat, float lng)
+    {
+    	return new GeoPoint((int)(lat * 1E6), (int)(lng * 1E6));
     }
 }
