@@ -86,12 +86,15 @@ public class MainActivity extends FragmentActivity {
         	    myCal.setTime(new Date(maxValue));
         		yearTo = myCal.get(Calendar.YEAR) + myCal.get(Calendar.ERA);
         		
+        		// Fix for one-off errors in UI
+        		yearFrom--; yearTo--;
+        		
         		//TEST on update yearSeek
         		TextView fromYear = (TextView) findViewById(R.id.fromYearValue);
         		TextView toYear = (TextView) findViewById(R.id.toYearValue);
         		
+        		
         		// FIX for displaying correct era
-        		// Log.i("LocalStories", "Min is now" + minValue);
         		Long yearZero = -62146336523773L;
         		String baFrom, baTo;
         		
