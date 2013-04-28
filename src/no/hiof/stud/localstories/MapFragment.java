@@ -142,7 +142,7 @@ public class MapFragment extends Fragment {
         ArrayList<Event> events = Search.getList();
         Log.i("LocalStories", "Events size: "+events.size());
 	    for(int i=0; i<events.size(); i++){
-	    	GeoPoint eventPoint = decimalDegreesToGeoPoint((float) events.get(i).getX(), (float) events.get(i).getY());
+	    	GeoPoint eventPoint = decimalDegreesToGeoPoint((float) events.get(i).getLat(), (float) events.get(i).getLng());
 	    	myItemizedOverlay.addItem(eventPoint, "Event " + i, "Event " + i);
 	    }
     }

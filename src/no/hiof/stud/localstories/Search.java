@@ -95,8 +95,8 @@ public class Search {
 		for(int i=0; i<events.size();i++){
 			Event evt = events.get(i);
 			//Phytagoras
-			double kat1 = Math.pow(Math.abs(locX-evt.getX()),2.0);
-			double kat2 = Math.pow(Math.abs(locY-evt.getY()),2.0);
+			double kat1 = Math.pow(Math.abs(locX-evt.getLat()),2.0);
+			double kat2 = Math.pow(Math.abs(locY-evt.getLng()),2.0);
 			double dist = Math.sqrt(kat1+kat2);
 
 		    Log.i("LocalStories", "Kat1 "+ kat1);

@@ -29,16 +29,16 @@ public class Event {
 		keywords = keys.split(",");
 	}
 
-	public double getX(){
+	public double getLat(){
 		return x;
 	}
-	public double getY(){
+	public double getLng(){
 		return y;
 	}
-	public void setX(double xx){
+	public void setLat(double xx){
 		x=xx;
 	}
-	public void setY(double yy){
+	public void setLng(double yy){
 		y=yy;
 	}
 }

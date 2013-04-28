@@ -34,8 +34,8 @@ public class MainActivity extends FragmentActivity {
     // HIOF: GeoPoint gPt = new GeoPoint(59128879,11353987);
     
     //GPS Location
-    public static float lat   = 59.123389f;   //in DecimalDegrees
-    public static float lng   = 11.446778f;   //in DecimalDegrees
+    public static float lat   = 59.128221f;   //in DecimalDegrees
+    public static float lng   = 11.385012f;   //in DecimalDegrees
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
