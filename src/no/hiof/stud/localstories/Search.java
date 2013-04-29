@@ -53,7 +53,7 @@ public class Search {
 	private void yearFilter(){
 		for(int i=0; i<events.size();i++){
 			Event evt = events.get(i);
-			if(evt.year<yearFrom || evt.year>yearTo){
+			if(evt.toYear<yearFrom || evt.fromYear>yearTo){
 				events.remove(i);
 				i--;
 			}
