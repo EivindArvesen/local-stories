@@ -3,6 +3,7 @@
 
     <string name="app_name">Local Stories</string>
     <string name="action_settings">Settings</string>
+    
     <string name="edit_message">Enter search-terms</string>
     <string name="from_year_text">From: </string>
     <string name="from_year_value">1950 BCE</string>
@@ -15,13 +16,21 @@
     <string name="button_list">List View</string>
     <string name="button_update">Update Location</string>
     <string name="button_location">Show Location</string>
+    
     <string name="evt_back">Go Back</string>
     <string name="evt_title">Event Title</string>
     <string name="evt_loc">Show on Map</string>
     <string name="evt_text">Article</string>
     <string name="evt_photos">Photos</string>
     <string name="evt_audio">Audio</string>
+    
     <string name="display_photo">Displaying Photo</string>
+    <string name="rate_photo">Rate Picture!</string>
+    <string name="rate_p1">Bad</string>
+    <string name="rate_p2">Ok</string>
+    <string name="rate_p3">Good</string>
+    <string name="comment_photo">Comment on Photo</string>
+    
     <string name="play_audio">Playing Audio</string>
     
     <string name="menu_settings">Settings</string>
