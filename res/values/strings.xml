@@ -21,6 +21,7 @@
     <string name="evt_text">Article</string>
     <string name="evt_photos">Photos</string>
     <string name="evt_audio">Audio</string>
+    <string name="display_photo">Displaying Photo</string>
     <string name="play_audio">Playing Audio</string>
     
     <string name="menu_settings">Settings</string>

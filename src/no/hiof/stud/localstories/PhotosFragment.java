@@ -13,21 +13,20 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class AudioFragment extends Fragment{
-	
+public class PhotosFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
     	// Inflate the layout for this fragment
-        return inflater.inflate(R.layout.event_audio_fragment, container, false);
+        return inflater.inflate(R.layout.event_photos_fragment, container, false);
     }
 	
 	@Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Fragment frag = getFragmentManager().findFragmentByTag("event_audio_Fragment");	    
-	    ListView AudioList = (ListView) frag.getView().findViewById(R.id.listView2);
-	    String[] audio = EventActivity.getEvent().audio;
+        Fragment frag = getFragmentManager().findFragmentByTag("event_photos_Fragment");	    
+	    ListView AudioList = (ListView) frag.getView().findViewById(R.id.listView3);
+	    String[] audio = EventActivity.getEvent().pictures;
 	    
 	    String[] values = new String[audio.length];
 	    for(int i=0; i<audio.length; i++){
@@ -45,7 +44,7 @@ public class AudioFragment extends Fragment{
 				int position, long id) {
 				
 				String ide = Search.getList().get((int) id).id+"";
-				Intent intent = new Intent(getActivity(), PlayAudio.class);
+				Intent intent = new Intent(getActivity(), DisplayPhoto.class);
 				intent.putExtra(EventActivity.EVENT_ID, ide);
 				startActivity(intent);
 		      }

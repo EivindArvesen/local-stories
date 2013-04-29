@@ -5,7 +5,7 @@ import java.util.List;
 public class Load {
 	private static String header;
 	private static String text;
-	private static int[] pictures;
+	private static String[] pictures;
 	private static String[] audio;
 	private static String date;
 	private static String keywords;
@@ -26,6 +26,7 @@ public class Load {
 		header="Goodbye World";
 		text="Stadion";
 		date = "21.12.2012";
+		pictures=new String[]{"Photo", "Image"};
 		keywords = "End, of,the,day,thing,programing";
 		evt = new Event(header,text,date,pictures,audio,keywords);
 		evt.setLat(59.122319f);

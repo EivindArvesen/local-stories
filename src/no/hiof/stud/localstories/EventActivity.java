@@ -30,7 +30,7 @@ public class EventActivity extends FragmentActivity {
 	    TextView EventHeader = (TextView) findViewById(R.id.EventHeader);
 	    EventHeader.setText(getEvent().header);
 	    
-	    // Create new fragment and transaction => osmdroid
+	    // Create new fragment and transaction
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         ArticleFragment fragment = new ArticleFragment();
@@ -66,6 +66,24 @@ public class EventActivity extends FragmentActivity {
 
         // Replacing
         fragmentTransaction.replace(R.id.fragment_container, fragment, "event_article_Fragment");
+        fragmentTransaction.addToBackStack(null);
+        
+        // Commiting
+        fragmentTransaction.commit();
+        
+        // Execute pending operations (commit) IMMEDEATELY
+        fragmentManager.executePendingTransactions();
+	}
+	
+	/** Called when the user clicks the "Photos" button */
+	public void fragPhotos(View view) {
+		// Create new fragment and transaction
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        PhotosFragment fragment = new PhotosFragment();
+
+        // Replacing
+        fragmentTransaction.replace(R.id.fragment_container, fragment, "event_photos_Fragment");
         fragmentTransaction.addToBackStack(null);
         
         // Commiting

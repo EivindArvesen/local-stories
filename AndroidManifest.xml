@@ -45,6 +45,10 @@
             android:label="@string/title_activity_event" >
         </activity>
         <activity
+            android:name="no.hiof.stud.localstories.DisplayPhoto"
+            android:label="no.hiof.stud.localstories.DisplayPhoto" >
+        </activity>
+        <activity
             android:name="no.hiof.stud.localstories.PlayAudio"
             android:label="no.hiof.stud.localstories.PlayAudio" >
         </activity>
