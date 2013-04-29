@@ -7,11 +7,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import no.hiof.stud.localstories.RangeSeekBar.OnRangeSeekBarChangeListener;
-
-import org.osmdroid.util.GeoPoint;
-import org.osmdroid.views.MapController;
-import org.osmdroid.views.MapView;
-
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -28,10 +23,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity {
-	private MapView         mMapView;
-    private MapController   mMapController;
-    
-    public final static String EVENT_ID = "1";
+	public final static String EVENT_ID = "1";
 	public final static String EXTRA_MESSAGE = "no.hiof.stud.localstories.MESSAGE";
 
     //Search

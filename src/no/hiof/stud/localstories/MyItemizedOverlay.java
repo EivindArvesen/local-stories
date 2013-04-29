@@ -8,7 +8,6 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.overlay.ItemizedOverlay;
 import org.osmdroid.views.overlay.OverlayItem;
 
-import android.content.Context;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.util.Log;

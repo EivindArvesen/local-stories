@@ -11,7 +11,10 @@ import org.osmdroid.tileprovider.util.CloudmadeUtil;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapController;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.OverlayItem;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -30,9 +33,9 @@ public class MapFragment extends Fragment {
     ZoomControls zoom;
     
     MyItemizedOverlay myItemizedOverlay = null;
+    MyOwnItemizedOverlay myOwnItemizedOverlay = null;
     
-    public Boolean showLocation = false;
-    
+    public Boolean showLocation = false;    
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -129,19 +132,17 @@ public class MapFragment extends Fragment {
         int markerHeight = marker.getIntrinsicHeight();
         marker.setBounds(0, markerHeight, markerWidth, 0);
          
-        ResourceProxy resourceProxy = new DefaultResourceProxyImpl(getActivity());
-         
-        myItemizedOverlay = new MyItemizedOverlay(marker, resourceProxy);
+        myOwnItemizedOverlay = new MyOwnItemizedOverlay(marker, getActivity());
         
         Fragment frag = getFragmentManager().findFragmentByTag("map_Fragment");
 	    mMapView = (MapView) frag.getView().findViewById(R.id.mapview);
-        mMapView.getOverlays().add(myItemizedOverlay);
+        mMapView.getOverlays().add(myOwnItemizedOverlay.getOverlay());
         
         ArrayList<Event> events = Search.getList();
         Log.i("LocalStories", "Events size: "+events.size());
 	    for(int i=0; i<events.size(); i++){
 	    	GeoPoint eventPoint = decimalDegreesToGeoPoint((float) events.get(i).getLat(), (float) events.get(i).getLng());
-	    	myItemizedOverlay.addItem(eventPoint, "Event " + i, "Event " + i);
+	    	myOwnItemizedOverlay.addItem(new OverlayItem("Event " + i, "Event " + i, eventPoint));
 	    	
 	    	// Listener for clicks on events...	    	
 	    	//eventId = mMapView.findViewById(myItemizedOverlay.getId());

@@ -1,7 +1,6 @@
 package no.hiof.stud.localstories;
 
 import java.util.ArrayList;
-
 import android.util.Log;
 
 public class Search {
