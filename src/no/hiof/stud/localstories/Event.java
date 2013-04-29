@@ -1,11 +1,15 @@
 package no.hiof.stud.localstories;
 
+import java.util.List;
+
+
 public class Event {
 	public int id;
 	private static int idcount=0;
 	public String header;
 	public String text;
 	public int[] pictures;
+	public String[] audio;
 	//Year
 	public int day=0;
 	public int month=0;
@@ -16,12 +20,13 @@ public class Event {
 	//
 	public String[] keywords;
 	
-	public Event(String head, String txt, String date, int[] pics, String keys){
+	public Event(String head, String txt, String date, int[] pics, String[] sounds, String keys){
 		id=idcount;
 		idcount++;
 		header=head;
 		text=txt;
 		pictures=pics;
+		audio=sounds;
 		String[] dte=date.split("[.]");
 		if(dte.length==3){
 			day = Integer.parseInt(dte[0]);

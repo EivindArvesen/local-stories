@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 public class EventActivity extends FragmentActivity {
 	private static Event event = null;
+	public static String EVENT_ID = "Event";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,14 +58,32 @@ public class EventActivity extends FragmentActivity {
 	}
 	
 	/** Called when the user clicks the "Article" button */
-	public void mapView(View view) {
-		// Create new fragment and transaction => osmdroid
+	public void fragText(View view) {
+		// Create new fragment and transaction
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         ArticleFragment fragment = new ArticleFragment();
 
         // Replacing
         fragmentTransaction.replace(R.id.fragment_container, fragment, "event_article_Fragment");
+        fragmentTransaction.addToBackStack(null);
+        
+        // Commiting
+        fragmentTransaction.commit();
+        
+        // Execute pending operations (commit) IMMEDEATELY
+        fragmentManager.executePendingTransactions();
+	}
+	
+	/** Called when the user clicks the "Audio" button */
+	public void fragAudio(View view) {
+		// Create new fragment and transaction
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        AudioFragment fragment = new AudioFragment();
+
+        // Replacing
+        fragmentTransaction.replace(R.id.fragment_container, fragment, "event_audio_Fragment");
         fragmentTransaction.addToBackStack(null);
         
         // Commiting

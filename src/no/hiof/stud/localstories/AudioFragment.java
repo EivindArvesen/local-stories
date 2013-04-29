@@ -2,12 +2,12 @@ package no.hiof.stud.localstories;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,60 +15,51 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class ListFragment extends Fragment {
-	public final static String EVENT_ID = "1";
-
+public class AudioFragment extends Fragment{
 	@Override
     public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
     }
-    
-    @Override
+	
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
     	// Inflate the layout for this fragment
-        return inflater.inflate(R.layout.list_fragment, container, false);
+        return inflater.inflate(R.layout.event_audio_fragment, container, false);
     }
-    
-    @Override
+	
+	@Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Fragment frag = getFragmentManager().findFragmentByTag("list_Fragment");
-        final ListView listview = (ListView) frag.getView().findViewById(R.id.listView1);
+        Fragment frag = getFragmentManager().findFragmentByTag("event_audio_Fragment");	    
+	    ListView AudioList = (ListView) frag.getView().findViewById(R.id.listView2);
+	    String[] audio = EventActivity.getEvent().audio;
 	    
-	    ArrayList<Event> events = Search.getList();
-	    String[] values = new String[events.size()];
-	    for(int i=0; i<events.size(); i++){
-	    	values[i] = events.get(i).header;
-	    	
+	    String[] values = new String[audio.length];
+	    for(int i=0; i<audio.length; i++){
+	    	values[i] = audio[i];
 	    }
 
-	    final ArrayList<String> list = new ArrayList<String>();
-	    for (int i = 0; i < values.length; ++i) {
-	      list.add(values[i]);
-	    }
-
-	    Log.i("LocalStories", "3");
 	    StableArrayAdapter adapter = new StableArrayAdapter(getActivity(),
 	    		R.layout.item, R.id.label, values);
-	    listview.setAdapter(adapter);
+	    AudioList.setAdapter(adapter);
+	    
+	    AudioList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-	    listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		      @Override
+		      public void onItemClick(AdapterView<?> parent, final View view,
+				int position, long id) {
+				
+				String ide = Search.getList().get((int) id).id+"";
+				Intent intent = new Intent(getActivity(), PlayAudio.class);
+				intent.putExtra(EventActivity.EVENT_ID, ide);
+				startActivity(intent);
+		      }
 
-	      @Override
-	      public void onItemClick(AdapterView<?> parent, final View view,
-			int position, long id) {
-			
-			String ide = Search.getList().get((int) id).id+"";
-			Intent intent = new Intent(getActivity(), EventActivity.class);
-			intent.putExtra(EVENT_ID, ide);
-			startActivity(intent);
-	      }
-
-	    });
-	  }
-
-	  public class StableArrayAdapter extends ArrayAdapter<String> {
+		    });
+	}
+	
+	public class StableArrayAdapter extends ArrayAdapter<String> {
 
 	    HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
 

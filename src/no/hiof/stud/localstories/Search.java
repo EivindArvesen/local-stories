@@ -71,7 +71,7 @@ public class Search {
 			//Keyword filter
 			for(int s=0; s<txt.length; s++){
 				for(int r=0; r<evt.keywords.length; r++){
-					if(txt[s]==evt.keywords[r]) wordMatch = true;
+					if(txt[s].equalsIgnoreCase(evt.keywords[r])) wordMatch = true;
 				}
 			}
 			//Text filter

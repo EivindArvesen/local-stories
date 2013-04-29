@@ -41,12 +41,12 @@
                 android:value="no.hiof.stud.localstories.MainActivity" />
         </activity>
         <activity
-            android:name="no.hiof.stud.localstories.ResultPageActivity"
-            android:label="@string/title_activity_result_page" >
-        </activity>
-        <activity
             android:name="no.hiof.stud.localstories.EventActivity"
             android:label="@string/title_activity_event" >
+        </activity>
+        <activity
+            android:name="no.hiof.stud.localstories.PlayAudio"
+            android:label="no.hiof.stud.localstories.PlayAudio" >
         </activity>
         <meta-data android:name="CLOUDMADE_KEY" android:value="a4d8c7fac92e46168a440578f2410825" />
     </application>
