@@ -139,7 +139,7 @@ public class MainActivity extends FragmentActivity {
 				((TextView) findViewById(R.id.radiusValue)).setText(arg1+"km");
 				distance = arg1;
 				search();
-				Log.i("LocalStories", "User selected new radiuse: " + arg1);
+				Log.i("LocalStories", "User selected new radius: " + arg1);
 				
 			}
 
