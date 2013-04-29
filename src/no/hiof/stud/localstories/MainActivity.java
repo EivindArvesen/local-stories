@@ -31,6 +31,7 @@ public class MainActivity extends FragmentActivity {
 	private MapView         mMapView;
     private MapController   mMapController;
     
+    public final static String EVENT_ID = "1";
 	public final static String EXTRA_MESSAGE = "no.hiof.stud.localstories.MESSAGE";
 
     //Search

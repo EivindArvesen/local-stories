@@ -33,14 +33,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="no.hiof.stud.localstories.DisplayMessageActivity"
-            android:label="@string/title_activity_display_message"
-            android:parentActivityName="no.hiof.stud.localstories.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="no.hiof.stud.localstories.MainActivity" />
-        </activity>
-        <activity
             android:name="no.hiof.stud.localstories.EventActivity"
             android:label="@string/title_activity_event" >
         </activity>

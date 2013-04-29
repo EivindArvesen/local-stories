@@ -23,14 +23,14 @@
             android:id="@+id/label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@+id/label"
+            android:text="@string/item_title"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="XX/XX XXXX"
+            android:text="@string/item_date"
             android:textSize="15sp" />
     </LinearLayout>
 

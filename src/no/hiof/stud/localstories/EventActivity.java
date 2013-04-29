@@ -23,7 +23,7 @@ public class EventActivity extends FragmentActivity {
 		setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		
 		Intent intent = getIntent();
-	    String message = intent.getStringExtra(resultPageActivity.EVENT_ID);
+	    String message = intent.getStringExtra(MainActivity.EVENT_ID);
 	    int id= Integer.parseInt(message);
 	    EventActivity.setEvent(Library.Events.get(id));
 	    
