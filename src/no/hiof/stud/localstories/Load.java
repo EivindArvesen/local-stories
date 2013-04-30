@@ -11,7 +11,73 @@ public class Load {
 	private static Event evt;
 	public static void load(){
 		Library.emptyList();
-
+		
+		// Noise-events...
+		
+		header="Oslo Operahus Åpning";
+		text="Lorem Ipsum";
+		fdate = "12.04.2008";
+		tdate = "12.04.2008";
+		pictures=new String[]{};
+		audio=new String[]{"Åpningen"};
+		keywords = "oslo, opera, åpning";
+		evt = new Event(header,text,fdate,tdate,pictures,audio,keywords);
+		evt.setLat(59.906944f);
+		evt.setLng(10.753611f);
+		Library.addEvent(evt);
+		
+		header="Fredrikstad Grunnlegges";
+		text="Lorem Ipsum";
+		fdate = "01.01.1567";
+		tdate = "01.01.1567";
+		pictures=new String[]{};
+		audio=new String[]{"Grunnleggingen"};
+		keywords = "fredrikstad, grunnlegging, grunnlegges, glomma";
+		evt = new Event(header,text,fdate,tdate,pictures,audio,keywords);
+		evt.setLat(59.220537f);
+		evt.setLng(10.934701f);
+		Library.addEvent(evt);
+		
+		header="Slaget ved Stiklestad";
+		text="Lorem Ipsum";
+		fdate = "29.07.1030";
+		tdate = "29.07.1030";
+		pictures=new String[]{"Stiklestad"};
+		audio=new String[]{""};
+		keywords = "olav, hellige, stiklestad, slag, haraldsson";
+		evt = new Event(header,text,fdate,tdate,pictures,audio,keywords);
+		evt.setLat(63.796111f);
+		evt.setLng(11.560556f);
+		Library.addEvent(evt);
+		
+		header="Kapitulasjonsavtalen Undertegnes";
+		text="Lorem Ipsum";
+		fdate = "10.06.1940";
+		tdate = "10.06.1940";
+		pictures=new String[]{};
+		audio=new String[]{""};
+		keywords = "kapitulasjon, verdenskrig, norge, tyskland";
+		evt = new Event(header,text,fdate,tdate,pictures,audio,keywords);
+		evt.setLat(63.430515f);
+		evt.setLng(10.395053f);
+		Library.addEvent(evt);
+		
+		header="Imperiet Slår Tilbake-filming starter i Norge";
+		text="Lorem Ipsum";
+		fdate = "05.03.1979";
+		tdate = "05.03.1979";
+		pictures=new String[]{};
+		audio=new String[]{""};
+		keywords = "kapitulasjon, verdenskrig, norge, tyskland";
+		evt = new Event(header,text,fdate,tdate,pictures,audio,keywords);
+		evt.setLat(60.547676f);
+		evt.setLng(7.448344f);
+		Library.addEvent(evt);
+		
+		
+		
+		// IMPORTANT EVENTS
+		
 		//Event 1
 		header="Påskekrim på HiOF";
 		text="Påskekrim i HiOFs bokbad Krimforfatter Jan-Erik Fjell var gjest under bokbadet til biblioteket ved Høgskolen i Østfold 18. mars 2013. 'Jeg håper min nye bok er klar for lansering i august', sa Jan-Erik Fjell under sitt besøk på Remmen i ettermiddag. Snaut en uke før årets påskeferie tok krimforfatteren tilhørerne med inn i sin skrivestue, arbeidshverdag og kontakt med forlagsbransjen. Bokbad med krim og påskeliljer i biblioteketet møte med Jan-Erik Fjells hovedfigur i krimbøkene hans - Anton Brekke - ble det også tid til. Jan-Erik Fjell er både som forfatter og radiovert kjent for å kunne formidle seg godt.I 2010 vant han Bokhandlerprisen i Norge for sin krimdebut med boka 'Tysteren'. Under samtalen ved Høgskolen i Østfold fortalte Jan-Erik Fjell Åpent om hvordan han jobber seg fram med to-tre utvalgte sparringspartnerne - kapittel for kapittel. Mord for mord.";
@@ -75,19 +141,6 @@ public class Load {
 		evt = new Event(header,text,fdate,tdate,pictures,audio,keywords);
 		evt.setLat(59.212467f);
 		evt.setLng(10.931038f);
-		Library.addEvent(evt);
-		
-		// Dummy-eventer...
-		header="Noise 1";
-		text="Lorem Ipsum";
-		fdate = "20.01.1200";
-		tdate = "20.01.1345";
-		pictures=new String[]{};
-		audio=new String[]{};
-		keywords = "noise";
-		evt = new Event(header,text,fdate,tdate,pictures,audio,keywords);
-		evt.setLat(60.212467f);
-		evt.setLng(11.931038f);
 		Library.addEvent(evt);
 	}
 }
