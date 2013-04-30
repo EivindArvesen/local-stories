@@ -129,6 +129,7 @@ public class MainActivity extends FragmentActivity {
         
         // Handle Radius-seekbar
         SeekBar radiusSB = (SeekBar) findViewById(R.id.RadiusSeekBar);
+        radiusSB.setMax(500);
         
         radiusSB.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
 
@@ -172,7 +173,7 @@ public class MainActivity extends FragmentActivity {
         
         // Execute pending operations (commit) IMMEDEATELY
         fragmentManager.executePendingTransactions();
-        showLocation(this.findViewById(android.R.id.content));
+        mapView(this.findViewById(android.R.id.content));
 	}
 
 	@Override
@@ -282,6 +283,11 @@ public class MainActivity extends FragmentActivity {
 	
 	/** Called when the user clicks the "Show Location" button */
 	public void showLocation(View view) {
+		try {
+	    	getIntent().removeExtra(EventActivity.EVENT_ID);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		mapView(this.findViewById(android.R.id.content));
 	}
 

@@ -34,8 +34,8 @@ public class Load {
 		audio=new String[]{};
 		keywords = "Arbeider,dag,youngstorget,oslo,mai";
 		evt = new Event(header,text,fdate,tdate,pictures,audio,keywords);
-		evt.setLat(59.119885f);
-		evt.setLng(11.395483f);
+		evt.setLat(59.914399f);
+		evt.setLng(10.74918f);
 		Library.addEvent(evt);
 		
 		//Event 3
