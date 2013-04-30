@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import no.hiof.stud.localstories.RangeSeekBar.OnRangeSeekBarChangeListener;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -30,7 +29,7 @@ public class MainActivity extends FragmentActivity {
     //Search
     private int yearFrom=-1950;
     private int yearTo=2013;
-    private float distance=5;
+    private float distance=500;
     private Search search = new Search();
     
     // Centering if user comes from event-view
@@ -129,7 +128,8 @@ public class MainActivity extends FragmentActivity {
         
         // Handle Radius-seekbar
         SeekBar radiusSB = (SeekBar) findViewById(R.id.RadiusSeekBar);
-        radiusSB.setMax(500);
+        radiusSB.setMax((int)distance);
+        radiusSB.setProgress((int)distance);
         
         radiusSB.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
 

@@ -10,7 +10,7 @@
     <string name="to_year_text">To: </string>
     <string name="to_year_value">2013 CE</string>
     <string name="radius_text">Radius: </string>
-    <string name="radius_value">5km</string>
+    <string name="radius_value">500km</string>
     <string name="button_send">Search</string>
     <string name="button_map">Map View</string>
     <string name="button_list">List View</string>
@@ -26,6 +26,8 @@
     <string name="evt_text">Article</string>
     <string name="evt_photos">Photos</string>
     <string name="evt_audio">Audio</string>
+    
+ 	<string name="evt_add_photo">Add Photo</string>
     
     <string name="display_photo">Displaying Photo</string>
     <string name="rate_photo">Rate Picture!</string>

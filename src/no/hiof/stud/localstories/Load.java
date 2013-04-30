@@ -78,5 +78,16 @@ public class Load {
 		Library.addEvent(evt);
 		
 		// Dummy-eventer...
+		header="Noise 1";
+		text="Lorem Ipsum";
+		fdate = "20.01.1200";
+		tdate = "20.01.1345";
+		pictures=new String[]{};
+		audio=new String[]{};
+		keywords = "noise";
+		evt = new Event(header,text,fdate,tdate,pictures,audio,keywords);
+		evt.setLat(60.212467f);
+		evt.setLng(11.931038f);
+		Library.addEvent(evt);
 	}
 }
