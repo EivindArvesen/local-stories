@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,15 +39,8 @@ public class ListFragment extends Fragment {
 	    String[] values = new String[events.size()];
 	    for(int i=0; i<events.size(); i++){
 	    	values[i] = events.get(i).header;
-	    	
 	    }
 
-	    final ArrayList<String> list = new ArrayList<String>();
-	    for (int i = 0; i < values.length; ++i) {
-	      list.add(values[i]);
-	    }
-
-	    Log.i("LocalStories", "3");
 	    StableArrayAdapter adapter = new StableArrayAdapter(getActivity(),
 	    		R.layout.item, R.id.label, values);
 	    listview.setAdapter(adapter);
