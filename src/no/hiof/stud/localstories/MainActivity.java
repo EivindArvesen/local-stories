@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import no.hiof.stud.localstories.RangeSeekBar.OnRangeSeekBarChangeListener;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -32,13 +33,18 @@ public class MainActivity extends FragmentActivity {
     private float distance=5;
     private Search search = new Search();
     
+    // Centering if user comes from event-view
+    public float cLat;
+    public float cLng;
+    
     //GPS Location
     public static float lat   = 59.128221f;   //in DecimalDegrees
     public static float lng   = 11.385012f;   //in DecimalDegrees
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);		
+		
 		setContentView(R.layout.activity_main);
 
 		// Restrict application to portrait view only

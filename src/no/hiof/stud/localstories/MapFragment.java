@@ -29,7 +29,7 @@ import android.widget.ZoomControls;
 public class MapFragment extends Fragment {
 	private MapView         mMapView;
     private MapController   mMapController;
-
+    
     ZoomControls zoom;
     
     MyItemizedOverlay myItemizedOverlay = null;
@@ -94,7 +94,20 @@ public class MapFragment extends Fragment {
         
     	mMapController.setZoom(13);
 	    //mMapController.setCenter(gPt);
-	    mMapController.animateTo(gPt);
+    	
+    	try {    		
+    		Intent intent = getActivity().getIntent();
+    	    String message = intent.getStringExtra(EventActivity.EVENT_ID);
+    	    int id= Integer.parseInt(message);
+    	    float cLat = (float) Library.Events.get(id).getLat();
+    	    float cLng = (float) Library.Events.get(id).getLng();
+    	    Log.i("LocalStories", "Centering on event with id="+id+".");
+    	    mMapController.animateTo(decimalDegreesToGeoPoint(cLat,cLng));
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.i("LocalStories", "No center point specified - defaulting to user's position.");
+			mMapController.animateTo(gPt);
+		}
         
         // Add overlays for current position and relevant events (default args or results from search)
         addOverlayCurrentPosition(gPt);
@@ -143,18 +156,6 @@ public class MapFragment extends Fragment {
 	    for(int i=0; i<events.size(); i++){
 	    	GeoPoint eventPoint = decimalDegreesToGeoPoint((float) events.get(i).getLat(), (float) events.get(i).getLng());
 	    	myOwnItemizedOverlay.addItem(new OverlayItem("Event " + i, "Event " + i, eventPoint));
-	    	
-	    	// Listener for clicks on events...	    	
-	    	//eventId = mMapView.findViewById(myItemizedOverlay.getId());
-	    	//myItemizedOverlay.onTouchEvent(event, mMapView);
-	    	    	
-	    	//Log.i("LocalStories", "marker: ");
-	    	/*.setOnClickListener(new OnClickListener() {
-		         @Override
-		         public void onClick(View v) {
-		                 Log.i("LocalStories", "Clicked on event!");  
-		         }
-			 });*/
 	    }
     }
     

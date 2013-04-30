@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 public class EventActivity extends FragmentActivity {
 	private static Event event = null;
 	public static String EVENT_ID = "Event";
+	public static int id;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,7 @@ public class EventActivity extends FragmentActivity {
 		
 		Intent intent = getIntent();
 	    String message = intent.getStringExtra(MainActivity.EVENT_ID);
-	    int id= Integer.parseInt(message);
+	    id= Integer.parseInt(message);
 	    EventActivity.setEvent(Library.Events.get(id));
 	    
 	    TextView EventHeader = (TextView) findViewById(R.id.EventHeader);
@@ -55,6 +57,14 @@ public class EventActivity extends FragmentActivity {
 	/** Called when the user clicks the Back button */
 	public void backButton(View view) {
 		finish();
+	}
+	
+	/** Called when the user clicks the "Show on Map" button */
+	public void showLocationOnMap(View view) {
+		String ide = Search.getList().get((int) id).id+"";
+		Intent intent = new Intent(this, MainActivity.class);
+		intent.putExtra(EVENT_ID, ide);
+		startActivity(intent);
 	}
 	
 	/** Called when the user clicks the "Article" button */
