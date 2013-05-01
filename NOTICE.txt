@@ -1,0 +1,13 @@
+Local Stories
+Copyright 2013 Eivind Arvesen and Kjetil Engvold.
+
+This product was developed as coursework during the course
+Mobile Applications (2013) at Østfold University College (http://www.hiof.no).
+
+Map support is provided by osmdroid, wich is open source software, copyright 2013.
+The original software is available from
+http://code.google.com/p/osmdroid/
+
+Osmdroid in turn relies on SLF4J, which is also open source software, copyright
+2004-2013 QOS.ch. The original software is available from
+http://www.slf4j.org
